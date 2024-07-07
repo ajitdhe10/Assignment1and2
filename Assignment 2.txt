@@ -1,0 +1,79 @@
+// Base class Shape
+public abstract class Shape
+{
+    // Abstract method to calculate area (must be overridden in derived classes)
+    public abstract double CalculateArea();
+}
+
+public class Triangle : Shape
+{
+    public double Base { get; set; }
+    public double Height { get; set; }
+
+    // Constructor
+    public Triangle(double b, double h)
+    {
+        Base = b;
+        Height = h;
+    }
+
+    // Override the abstract method to calculate area for Triangle
+    public override double CalculateArea()
+    {
+        return 0.5 * Base * Height;
+    }
+}
+
+public class Circle : Shape
+{
+    public double Radius { get; set; }
+
+    // Constructor
+    public Circle(double radius)
+    {
+        Radius = radius;
+    }
+
+    // Override the abstract method to calculate area for Circle
+    public override double CalculateArea()
+    {
+        return Math.PI * Radius * Radius;
+    }
+}
+
+public class Square : Shape
+{
+    public double Side { get; set; }
+
+    // Constructor
+    public Square(double side)
+    {
+        Side = side;
+    }
+
+    // Override the abstract method to calculate area for Square
+    public override double CalculateArea()
+    {
+        return Side * Side;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        
+
+        Shape[] shapes = new Shape[]
+        {
+            new Triangle(5, 7),
+            new Circle(3.5),
+            new Square(4)
+        };
+
+        foreach (var shape in shapes)
+        {
+            Console.WriteLine($"Area of {shape.GetType().Name} is {shape.CalculateArea()}");
+        }
+    }
+}
